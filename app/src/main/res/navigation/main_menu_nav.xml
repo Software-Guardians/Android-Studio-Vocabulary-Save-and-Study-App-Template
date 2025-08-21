@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_menu_nav"
+    app:startDestination="@id/mainMenuFragment">
+
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.example.my_vocabulary.ui.fragment.MainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" />
+    <fragment
+        android:id="@+id/myWordListFragment"
+        android:name="com.example.my_vocabulary.ui.fragment.MyWordListFragment"
+        android:label="fragment_my_word_list"
+        tools:layout="@layout/fragment_my_word_list" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.my_vocabulary.ui.fragment.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

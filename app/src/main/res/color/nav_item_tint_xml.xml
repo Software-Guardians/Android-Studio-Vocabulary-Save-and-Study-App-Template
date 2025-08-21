@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Seçiliyken -->
+    <item android:color="#FF222222" android:state_checked="true"/>
+    <!-- Varsayılan -->
+    <item android:color="#99222222"/>
+</selector>
