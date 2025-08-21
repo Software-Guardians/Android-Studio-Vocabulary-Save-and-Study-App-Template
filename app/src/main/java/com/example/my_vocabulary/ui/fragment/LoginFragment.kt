@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.my_vocabulary.R
 import com.example.my_vocabulary.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
 
