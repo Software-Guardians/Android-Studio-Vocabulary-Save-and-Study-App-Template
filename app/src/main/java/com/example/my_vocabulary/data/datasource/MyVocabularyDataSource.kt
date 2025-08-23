@@ -9,8 +9,8 @@ class MyVocabularyDataSource(var myVocabularyDAO: MyVocabularyDAO) {
     suspend fun getByID(vocabularyID: Int): Vocabulary{
         return myVocabularyDAO.getByID(vocabularyID)
     }
-    suspend fun insertVocabulary(id: Int, defaultLanguage: String, translateLanguage: String, text: String, translatedText: String,examples: String){
-        val vocabulary=Vocabulary(id,defaultLanguage,translateLanguage,text,translatedText,examples)
+    suspend fun insertVocabulary(defaultLanguage: String, translateLanguage: String, text: String, translatedText: String,examples: String){
+        val vocabulary=Vocabulary(0,defaultLanguage,translateLanguage,text,translatedText,examples)
         return myVocabularyDAO.insert(vocabulary)
     }
     suspend fun getAllVocabulary(): List<Vocabulary> = withContext(Dispatchers.IO){

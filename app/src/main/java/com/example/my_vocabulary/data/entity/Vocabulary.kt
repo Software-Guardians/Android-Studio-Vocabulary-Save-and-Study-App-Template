@@ -11,11 +11,11 @@ import java.io.Serializable
 @Entity(tableName = "vocabulary")
 data class Vocabulary(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")@NotNull
+    @ColumnInfo(name = "id")
     val id: Int=0,
-    @ColumnInfo(name = "default_language")@NotNull
+    @ColumnInfo(name = "default_language")
     val default_language: String="",
-    @ColumnInfo(name = "translate_language")@NotNull
+    @ColumnInfo(name = "translate_language")
     val translate_language: String="",
     @ColumnInfo(name = "text")@NotNull
     val text: String="",
