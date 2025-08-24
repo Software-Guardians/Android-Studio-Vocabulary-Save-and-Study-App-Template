@@ -31,13 +31,29 @@ class LoginFragment : Fragment() {
             val Password=binding.editTextPassword.text.toString()
             val userLocal=sharedPreferences.getString(Name,"")
             //Is not Empty
-            if(!binding.editTextPassword.text.isNullOrBlank() && !binding.editTextUsername.text.isNullOrBlank()) {
+            if(!Name.isNullOrBlank() && !Password.isNullOrBlank()) {
                 if(userLocal==Password){
 
                     findNavController().navigate(R.id.action_loginFragment_to_mainMenuFragment)
                 }
                 else{
                     Toast.makeText(requireContext(),"Login Failed.Username or password is incorrect" ,Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+        binding.buttonSignIn.setOnClickListener {
+            val Name=binding.editTextUsername.text.toString()
+            val Password=binding.editTextPassword.text.toString()
+            if (!Name.isNullOrBlank()){
+                if (sharedPreferences.contains(Name)){
+                    Toast.makeText(requireContext(),"This user already exists.", Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    val editor=sharedPreferences.edit()
+                    editor.putString(Name,Password)
+                    editor.apply()
+                    Toast.makeText(requireContext(),"User created.", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_loginFragment_to_mainMenuFragment)
                 }
             }
         }
