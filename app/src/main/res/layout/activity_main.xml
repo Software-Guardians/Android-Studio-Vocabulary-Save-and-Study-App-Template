@@ -29,7 +29,7 @@
         android:background="@drawable/bg_nav_glass"
         android:backgroundTint="@android:color/transparent"
         android:translationY="-16dp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:elevation="12dp"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"

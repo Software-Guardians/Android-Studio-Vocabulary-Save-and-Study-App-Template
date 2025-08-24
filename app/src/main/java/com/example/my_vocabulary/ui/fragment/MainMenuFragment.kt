@@ -8,10 +8,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
+import com.example.my_vocabulary.MainActivity
 import com.example.my_vocabulary.R
 import com.example.my_vocabulary.databinding.FragmentMainMenuBinding
 import com.example.my_vocabulary.ui.viewmodel.MainMenuViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,10 +26,13 @@ class MainMenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding= FragmentMainMenuBinding.inflate(inflater,container,false)
-        viewModel.insertVocabulary("en","tr","word","kelime","")
-        viewModel.insertVocabulary("en","tr","text","metin","")
-        viewModel.insertVocabulary("en","tr","backpack","sırt çantası","")
-        viewModel.insertVocabulary("en","tr","computer","bilgisayar","")
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner){
+            Snackbar.make(requireView(),"Are you sure exit the application?", Snackbar.LENGTH_SHORT).setAction("Exit"){
+                requireActivity().finish()
+            }.show()
+        }
+        (requireActivity() as MainActivity).isLogin()
+
 
         return binding.root
     }
