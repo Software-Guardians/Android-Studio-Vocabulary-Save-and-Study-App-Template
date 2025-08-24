@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -32,6 +33,9 @@ class MyWordListFragment : Fragment() {
         }
         binding.recyclerViewMyWorldList.adapter=adapter
         binding.recyclerViewMyWorldList.layoutManager= LinearLayoutManager(requireContext())
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner){
+
+        }
         return binding.root
     }
 
