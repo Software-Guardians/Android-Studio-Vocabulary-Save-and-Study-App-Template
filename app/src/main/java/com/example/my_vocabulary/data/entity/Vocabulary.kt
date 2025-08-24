@@ -22,8 +22,8 @@ data class Vocabulary(
     @ColumnInfo(name = "translated_text")@NotNull
     val translated_text: String="",
     @ColumnInfo(name = "examples")
-    val examples: String
-
-
+    val examples: String,
+    @ColumnInfo(name="user_name")
+    val user_name: String
 ): Serializable {
 }

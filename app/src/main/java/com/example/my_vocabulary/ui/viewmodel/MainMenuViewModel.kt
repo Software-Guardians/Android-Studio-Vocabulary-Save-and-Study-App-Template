@@ -13,14 +13,14 @@ import javax.inject.Inject
 @HiltViewModel
 class MainMenuViewModel @Inject constructor(var repository: MyVocabularyRepository): ViewModel() {
     var vocabularyList= MutableLiveData<List<Vocabulary>>()
-    fun insertVocabulary(defaultLanguage: String,translateLanguage: String,text: String,translatedText: String,examples: String){
+    fun insertVocabulary(defaultLanguage: String,translateLanguage: String,text: String,translatedText: String,examples: String,user_name: String){
         CoroutineScope(Dispatchers.Main).launch {
-            repository.insertVocabulary(defaultLanguage,translateLanguage,text,translatedText,examples)
+            repository.insertVocabulary(defaultLanguage,translateLanguage,text,translatedText,examples,user_name)
         }
     }
-    fun getAllVocabulary(){
+    fun getAllVocabulary(user_name: String){
         CoroutineScope(Dispatchers.Main).launch {
-            vocabularyList.value=repository.getAllVocabulary()
+            vocabularyList.value=repository.getAllVocabulary(user_name)
         }
     }
 }

@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.my_vocabulary.R
+import com.example.my_vocabulary.data.entity.applicationData
 import com.example.my_vocabulary.databinding.FragmentMyWordListBinding
 import com.example.my_vocabulary.ui.adapter.MyWordListAdapter
 import com.example.my_vocabulary.ui.viewmodel.MyWordListViewModel
@@ -24,7 +25,7 @@ class MyWordListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding= FragmentMyWordListBinding.inflate(inflater,container,false)
-        viewModel.getAllWord()
+        viewModel.getAllWord(applicationData.user_name_global)
         adapter= MyWordListAdapter(requireContext(),emptyList(),viewModel)
         viewModel.vocabularyList.observe(viewLifecycleOwner){list->
             adapter.setData(list)

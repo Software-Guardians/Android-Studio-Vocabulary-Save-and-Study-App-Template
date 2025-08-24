@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.findNavController
 import com.example.my_vocabulary.R
+import com.example.my_vocabulary.data.entity.applicationData
 import com.example.my_vocabulary.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.random.Random
@@ -33,7 +34,8 @@ class LoginFragment : Fragment() {
             //Is not Empty
             if(!Name.isNullOrBlank() && !Password.isNullOrBlank()) {
                 if(userLocal==Password){
-
+                    applicationData.user_name_global=Name
+                    Toast.makeText(requireContext(),"Welcome back ${Name} !", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_loginFragment_to_mainMenuFragment)
                 }
                 else{
@@ -52,6 +54,7 @@ class LoginFragment : Fragment() {
                     val editor=sharedPreferences.edit()
                     editor.putString(Name,Password)
                     editor.apply()
+                    applicationData.user_name_global=Name
                     Toast.makeText(requireContext(),"User created.", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_loginFragment_to_mainMenuFragment)
                 }

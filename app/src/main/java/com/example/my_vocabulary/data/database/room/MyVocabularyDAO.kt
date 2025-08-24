@@ -11,8 +11,8 @@ import com.example.my_vocabulary.data.entity.Vocabulary
 interface MyVocabularyDAO {
     @Insert
     suspend fun insert(vocabulary: Vocabulary)
-    @Query("Select * from vocabulary")
-    suspend fun getAll(): List<Vocabulary>
+    @Query("Select * from vocabulary where user_name=:user_name")
+    suspend fun getAllbyUser(user_name: String): List<Vocabulary>
     @Delete
     suspend fun delete(vocabulary: Vocabulary)
     @Query("Select * from vocabulary where id=:id")

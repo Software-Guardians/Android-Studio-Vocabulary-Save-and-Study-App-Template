@@ -12,6 +12,7 @@ import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import com.example.my_vocabulary.MainActivity
 import com.example.my_vocabulary.R
+import com.example.my_vocabulary.data.entity.applicationData
 import com.example.my_vocabulary.databinding.FragmentMainMenuBinding
 import com.example.my_vocabulary.ui.viewmodel.MainMenuViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -32,7 +33,7 @@ class MainMenuFragment : Fragment() {
             }.show()
         }
         (requireActivity() as MainActivity).isLogin()
-
+        binding.tvUserName.text= applicationData.user_name_global
 
         return binding.root
     }

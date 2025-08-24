@@ -14,9 +14,9 @@ import javax.inject.Inject
 class MyWordListViewModel @Inject constructor(var repository: MyVocabularyRepository): ViewModel() {
     var vocabularyList= MutableLiveData<List<Vocabulary>>()
 
-    fun getAllWord(){
+    fun getAllWord(user_name: String){
         CoroutineScope(Dispatchers.Main).launch {
-            vocabularyList.value=repository.getAllVocabulary()
+            vocabularyList.value=repository.getAllVocabulary(user_name)
         }
     }
 
