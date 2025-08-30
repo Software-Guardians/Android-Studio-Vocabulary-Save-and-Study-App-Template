@@ -9,8 +9,9 @@ import androidx.fragment.app.viewModels
 import com.example.my_vocabulary.R
 import com.example.my_vocabulary.databinding.FragmentAddButtonDialogBinding
 import com.example.my_vocabulary.ui.viewmodel.AddButtonDialogViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class AddButtonDialogFragment : Fragment() {
+class AddButtonDialogFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentAddButtonDialogBinding
     private lateinit var viewModel: AddButtonDialogViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
