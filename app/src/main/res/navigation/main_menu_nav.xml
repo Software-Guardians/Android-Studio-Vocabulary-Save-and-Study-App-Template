@@ -9,12 +9,20 @@
         android:id="@+id/mainMenuFragment"
         android:name="com.example.my_vocabulary.ui.fragment.MainMenuFragment"
         android:label="fragment_main_menu"
-        tools:layout="@layout/fragment_main_menu" />
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_addButtonDialogFragment"
+            app:destination="@id/addButtonDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myWordListFragment"
         android:name="com.example.my_vocabulary.ui.fragment.MyWordListFragment"
         android:label="fragment_my_word_list"
-        tools:layout="@layout/fragment_my_word_list" />
+        tools:layout="@layout/fragment_my_word_list" >
+        <action
+            android:id="@+id/action_myWordListFragment_to_addButtonDialogFragment"
+            app:destination="@id/addButtonDialogFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.my_vocabulary.ui.fragment.SettingsFragment"
@@ -29,4 +37,9 @@
             android:id="@+id/action_loginFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/addButtonDialogFragment"
+        android:name="com.example.my_vocabulary.ui.fragment.AddButtonDialogFragment"
+        android:label="fragment_add_button_dialog"
+        tools:layout="@layout/fragment_add_button_dialog" />
 </navigation>

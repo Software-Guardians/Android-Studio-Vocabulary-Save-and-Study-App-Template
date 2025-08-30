@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.my_vocabulary.MainActivity
 import com.example.my_vocabulary.R
 import com.example.my_vocabulary.data.entity.applicationData
@@ -35,7 +36,7 @@ class MainMenuFragment : Fragment() {
         (requireActivity() as MainActivity).isLogin()
         binding.tvUserName.text= applicationData.user_name_global
         binding.floatingActionButtonAddWordMainMenu.setOnClickListener {
-
+            findNavController().navigate(R.id.action_mainMenuFragment_to_addButtonDialogFragment)
         }
         return binding.root
     }
