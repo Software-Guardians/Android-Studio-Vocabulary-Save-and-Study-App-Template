@@ -9,10 +9,10 @@
 
     <Spinner
         android:id="@+id/spinnerDefaultLanguage"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="16dp"
         android:spinnerMode="dropdown"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/spinnerTranslateLanguage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,10 +21,10 @@
 
     <Spinner
         android:id="@+id/spinnerTranslateLanguage"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="32dp"
         android:spinnerMode="dropdown"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/editTextText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -35,7 +35,6 @@
         android:id="@+id/editTextText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Please type a word."
         android:inputType="text"
@@ -50,7 +49,6 @@
         android:id="@+id/editTextTranslatedText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Please type the translation of the word"
         android:inputType="text"
@@ -65,18 +63,28 @@
         android:id="@+id/editTextExample"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="You can write an example sentence."
         android:inputType="textMultiLine"
-        android:selectAllOnFocus="false"
         android:lines="3"
         android:maxLines="3"
+        android:selectAllOnFocus="false"
         android:singleLine="false"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonADD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTranslatedText" />
+
+    <Button
+        android:id="@+id/buttonADD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextExample" />
 </androidx.constraintlayout.widget.ConstraintLayout>
