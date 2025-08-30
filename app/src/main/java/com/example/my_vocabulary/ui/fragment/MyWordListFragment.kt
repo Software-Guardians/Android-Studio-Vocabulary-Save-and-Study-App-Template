@@ -40,6 +40,9 @@ class MyWordListFragment : Fragment() {
             val bottomNavigationView=requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigationView)
             bottomNavigationView.selectedItemId=R.id.mainMenuFragment
         }
+        binding.floatingActionButtonAddWord.setOnClickListener {
+
+        }
         return binding.root
     }
 

@@ -34,7 +34,9 @@ class MainMenuFragment : Fragment() {
         }
         (requireActivity() as MainActivity).isLogin()
         binding.tvUserName.text= applicationData.user_name_global
+        binding.floatingActionButtonAddWordMainMenu.setOnClickListener {
 
+        }
         return binding.root
     }
 
