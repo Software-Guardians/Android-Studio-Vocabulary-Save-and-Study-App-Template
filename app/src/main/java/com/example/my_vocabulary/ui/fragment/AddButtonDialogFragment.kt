@@ -54,6 +54,7 @@ class AddButtonDialogFragment : BottomSheetDialogFragment() {
             android.R.layout.simple_spinner_item,
             languageList
         )
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerDefaultLanguage.adapter=adapter
         binding.spinnerDefaultLanguage.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
@@ -100,7 +101,30 @@ class AddButtonDialogFragment : BottomSheetDialogFragment() {
             }
 
         }
-
+        binding.buttonADD.setOnClickListener {
+            if(binding.spinnerDefaultLanguage.selectedItemPosition==0){
+                Toast.makeText(requireContext(),"Please choose a language.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (binding.spinnerTranslateLanguage.selectedItemPosition==0) {
+                Toast.makeText(requireContext(),"Please choose a translate language.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (binding.editTextText.text.toString().isNullOrBlank()){
+                Toast.makeText(requireContext(),"Please type a word.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (binding.editTextTranslatedText.text.toString().isNullOrBlank()){
+                Toast.makeText(requireContext(),"Please type the translation of the word.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val defaultLanguage= Languages.values().find { it.displayName==binding.spinnerDefaultLanguage.selectedItem.toString()}!!
+            val translateLanguage= Languages.values().find { it.displayName==binding.spinnerTranslateLanguage.selectedItem.toString()}!!
+            val word=binding.editTextText.text.toString()
+            val translate=binding.editTextTranslatedText.text.toString()
+            val example=binding.editTextExample.text.toString()
+            viewModel.insertVocabulary(defaultLanguage,translateLanguage,word,translate,example)
+        }
         return binding.root
     }
 
