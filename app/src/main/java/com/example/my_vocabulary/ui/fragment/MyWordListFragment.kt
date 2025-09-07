@@ -31,7 +31,7 @@ class MyWordListFragment : Fragment() {
         viewModel.getAllWord(applicationData.user_name_global)
         adapter= MyWordListAdapter(requireContext(),emptyList(),viewModel)
         viewModel.vocabularyList.observe(viewLifecycleOwner){list->
-            adapter.setData(list)
+            adapter.setData(list.reversed())
         }
         binding.recyclerViewMyWorldList.adapter=adapter
         binding.recyclerViewMyWorldList.layoutManager= LinearLayoutManager(requireContext())
@@ -41,7 +41,7 @@ class MyWordListFragment : Fragment() {
             bottomNavigationView.selectedItemId=R.id.mainMenuFragment
         }
         binding.floatingActionButtonAddWord.setOnClickListener {
-
+            findNavController().navigate(R.id.action_myWordListFragment_to_addButtonDialogFragment)
         }
         return binding.root
     }

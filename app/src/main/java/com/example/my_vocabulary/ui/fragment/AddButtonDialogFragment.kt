@@ -124,6 +124,8 @@ class AddButtonDialogFragment : BottomSheetDialogFragment() {
             val translate=binding.editTextTranslatedText.text.toString()
             val example=binding.editTextExample.text.toString()
             viewModel.insertVocabulary(defaultLanguage,translateLanguage,word,translate,example)
+            Toast.makeText(requireContext(),"Word saved with succesfully.", Toast.LENGTH_SHORT).show()
+            dismiss()
         }
         return binding.root
     }

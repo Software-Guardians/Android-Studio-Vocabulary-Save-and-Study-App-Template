@@ -18,8 +18,7 @@ class AddButtonDialogViewModel @Inject constructor(var repository: MyVocabularyR
     fun insertVocabulary(defaultLanguage: Languages,translateLanguage: Languages,
                          text: String,translatedText: String,examples: String=""){
         CoroutineScope(Dispatchers.Main).launch {
-            repository.insertVocabulary(defaultLanguage, translateLanguage,text, translatedText, examples,
-                applicationData.user_name_global)
+            repository.insertVocabulary(defaultLanguage.displayName, translateLanguage.displayName,text, translatedText, examples, applicationData.user_name_global)
         }
     }
 }
