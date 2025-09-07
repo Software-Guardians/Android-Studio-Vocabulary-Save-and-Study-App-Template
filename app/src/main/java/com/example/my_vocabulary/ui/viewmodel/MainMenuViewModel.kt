@@ -1,8 +1,10 @@
 package com.example.my_vocabulary.ui.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.my_vocabulary.data.entity.Vocabulary
+import com.example.my_vocabulary.data.entity.applicationData
 import com.example.my_vocabulary.data.repo.MyVocabularyRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -12,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainMenuViewModel @Inject constructor(var repository: MyVocabularyRepository): ViewModel() {
-    var vocabularyList= MutableLiveData<List<Vocabulary>>()
+    var vocabularyList: LiveData<List<Vocabulary>> = repository.getAllVocabulary(applicationData.user_name_global)
     fun insertVocabulary(defaultLanguage: String,translateLanguage: String,text: String,translatedText: String,examples: String,user_name: String){
         CoroutineScope(Dispatchers.Main).launch {
             repository.insertVocabulary(defaultLanguage,translateLanguage,text,translatedText,examples,user_name)
@@ -20,7 +22,7 @@ class MainMenuViewModel @Inject constructor(var repository: MyVocabularyReposito
     }
     fun getAllVocabulary(user_name: String){
         CoroutineScope(Dispatchers.Main).launch {
-            vocabularyList.value=repository.getAllVocabulary(user_name)
+            vocabularyList=repository.getAllVocabulary(user_name)
         }
     }
 }

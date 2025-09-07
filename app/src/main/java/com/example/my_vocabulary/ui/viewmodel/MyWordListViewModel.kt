@@ -1,5 +1,6 @@
 package com.example.my_vocabulary.ui.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.my_vocabulary.data.entity.Languages
@@ -14,17 +15,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyWordListViewModel @Inject constructor(var repository: MyVocabularyRepository): ViewModel() {
-    var vocabularyList= MutableLiveData<List<Vocabulary>>()
+    var vocabularyList: LiveData<List<Vocabulary>> = repository.getAllVocabulary(applicationData.user_name_global)
 
     fun getAllWord(user_name: String){
         CoroutineScope(Dispatchers.Main).launch {
-            vocabularyList.value=repository.getAllVocabulary(user_name)
+            vocabularyList=repository.getAllVocabulary(user_name)
         }
     }
-    fun insertVocabulary(defaultLanguage: Languages,translateLanguage: Languages,
-                         text: String,translatedText: String,examples: String=""){
-        CoroutineScope(Dispatchers.Main).launch {
-            repository.insertVocabulary(defaultLanguage.displayName, translateLanguage.displayName,text, translatedText, examples, applicationData.user_name_global)
-        }
-    }
+
 }

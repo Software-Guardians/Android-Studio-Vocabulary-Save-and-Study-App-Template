@@ -10,11 +10,14 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.constraintlayout.helper.widget.Carousel
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import com.example.my_vocabulary.R
 import com.example.my_vocabulary.data.entity.Languages
 import com.example.my_vocabulary.databinding.FragmentAddButtonDialogBinding
 import com.example.my_vocabulary.ui.viewmodel.AddButtonDialogViewModel
+import com.example.my_vocabulary.ui.viewmodel.SharedViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import org.intellij.lang.annotations.Language
@@ -23,10 +26,13 @@ import org.intellij.lang.annotations.Language
 class AddButtonDialogFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentAddButtonDialogBinding
     private lateinit var viewModel: AddButtonDialogViewModel
+    private lateinit var sharedViewModel: SharedViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel: AddButtonDialogViewModel by viewModels()
         viewModel=tempViewModel
+        val tempSharedViewModel: SharedViewModel by viewModels()
+        sharedViewModel=tempSharedViewModel
     }
 
     override fun onCreateView(
@@ -125,6 +131,7 @@ class AddButtonDialogFragment : BottomSheetDialogFragment() {
             val example=binding.editTextExample.text.toString()
             viewModel.insertVocabulary(defaultLanguage,translateLanguage,word,translate,example)
             Toast.makeText(requireContext(),"Word saved with succesfully.", Toast.LENGTH_SHORT).show()
+            setFragmentResult("wordSaved", bundleOf("success" to true))
             dismiss()
         }
         return binding.root
