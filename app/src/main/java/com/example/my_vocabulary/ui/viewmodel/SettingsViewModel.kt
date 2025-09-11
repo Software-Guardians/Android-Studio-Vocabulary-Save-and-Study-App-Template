@@ -20,29 +20,15 @@ import javax.inject.Inject
 class SettingsViewModel @Inject constructor(var repository: MyVocabularyRepository): ViewModel() {
     var vocabularyList: LiveData<List<Vocabulary>> = repository.getAllVocabulary(applicationData.user_name_global)
     var settingsList= ArrayList<Settings>()
-    var mutex=Mutex()
     init {
         var settings= Settings("Remove All Words","It deletes all words for the active user. Statistics are affected accordingly.","Are you sure want to remove all word datas?")
 
         settingsList.add(settings)
     }
     fun removeAllDatas(){
-
-
-            viewModelScope.launch {
-                mutex.withLock {
-                    vocabularyList=repository.getAllVocabulary(applicationData.user_name_global)
-                    vocabularyList.value?.let { list->
-
-                        for (vocabulary in list){
-                            repository.deleteVocabulary(vocabulary)
-                            Log.e("MySettings","${vocabulary.text} silindi.")
-                        }
-                    }
-
-                }
-            }
-
+        CoroutineScope(Dispatchers.Main).launch {
+            repository.deleteAllVocabulary(applicationData.user_name_global)
+        }
 
     }
 
