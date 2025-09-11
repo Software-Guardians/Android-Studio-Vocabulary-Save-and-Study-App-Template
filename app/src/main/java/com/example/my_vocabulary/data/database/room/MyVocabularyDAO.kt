@@ -20,4 +20,6 @@ interface MyVocabularyDAO {
     suspend fun getByID(id:Int): Vocabulary
     @Update
     suspend fun update(vocabulary: Vocabulary)
+    @Query("Delete from vocabulary where user_name= :user_name")
+    suspend fun deleteAll(user_name: String): Int
 }

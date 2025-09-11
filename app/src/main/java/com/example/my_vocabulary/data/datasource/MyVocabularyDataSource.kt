@@ -23,4 +23,7 @@ class MyVocabularyDataSource(var myVocabularyDAO: MyVocabularyDAO) {
     suspend fun updateVocabulary(vocabulary: Vocabulary){
         return myVocabularyDAO.update(vocabulary)
     }
+    suspend fun deleteAllVocabulary(user_name: String):Int{
+        return myVocabularyDAO.deleteAll(user_name)
+    }
 }

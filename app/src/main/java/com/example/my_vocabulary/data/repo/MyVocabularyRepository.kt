@@ -10,4 +10,5 @@ class MyVocabularyRepository @Inject constructor(var myVocabularyDataSource: MyV
     suspend fun insertVocabulary(defaultLanguage: String, translateLanguage: String, text: String, translatedText: String,examples: String,user_name: String) = myVocabularyDataSource.insertVocabulary(defaultLanguage,translateLanguage,text,translatedText,examples,user_name)
     suspend fun deleteVocabulary(vocabulary: Vocabulary) = myVocabularyDataSource.deleteVocabulary(vocabulary)
     suspend fun updateVocabulary(vocabulary: Vocabulary) = myVocabularyDataSource.updateVocabulary(vocabulary)
+    suspend fun deleteAllVocabulary(user_name: String) = myVocabularyDataSource.deleteAllVocabulary(user_name)
 }
